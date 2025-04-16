@@ -45,18 +45,18 @@ class PaymentConfirmation {
             weeklyCheckout.appendChild(weeklyLink);
         }
 
-        // Add to monthly checkout
-        const monthlyCheckout = document.querySelector('#checkout-monthly .checkout-footer');
-        if (monthlyCheckout) {
-            const monthlyLink = document.createElement('a');
-            monthlyLink.href = '#';
-            monthlyLink.className = 'payment-confirm-link';
-            monthlyLink.textContent = 'Already paid? Submit your transaction ID here';
-            monthlyLink.addEventListener('click', (e) => {
+        // Add to lifetime checkout
+        const lifetimeCheckout = document.querySelector('#checkout-lifetime .checkout-footer');
+        if (lifetimeCheckout) {
+            const lifetimeLink = document.createElement('a');
+            lifetimeLink.href = '#';
+            lifetimeLink.className = 'payment-confirm-link';
+            lifetimeLink.textContent = 'Already paid? Submit your transaction ID here';
+            lifetimeLink.addEventListener('click', (e) => {
                 e.preventDefault();
                 this.showConfirmationForm();
             });
-            monthlyCheckout.appendChild(monthlyLink);
+            lifetimeCheckout.appendChild(lifetimeLink);
         }
 
         // Add to footer
@@ -169,12 +169,12 @@ class PaymentConfirmation {
         weeklyOption.value = 'weekly';
         weeklyOption.textContent = 'Weekly ($250.00)';
 
-        const monthlyOption = document.createElement('option');
-        monthlyOption.value = 'monthly';
-        monthlyOption.textContent = 'Monthly ($2500.00)';
+        const lifetimeOption = document.createElement('option');
+        lifetimeOption.value = 'lifetime';
+        lifetimeOption.textContent = 'Lifetime ($2500.00)';
 
         planSelect.appendChild(weeklyOption);
-        planSelect.appendChild(monthlyOption);
+        planSelect.appendChild(lifetimeOption);
 
         planGroup.appendChild(planLabel);
         planGroup.appendChild(planSelect);
