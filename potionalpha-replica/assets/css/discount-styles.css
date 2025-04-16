@@ -1,0 +1,87 @@
+.platform-preview {
+    margin-top: 40px;
+    text-align: center;
+    background-color: rgba(19, 14, 28, 0.5);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.platform-image {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(207, 126, 237, 0.3);
+    border: 1px solid rgba(207, 126, 237, 0.2);
+}
+
+.image-caption {
+    margin-top: 15px;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* Estilos para el formulario de descuento */
+.discount-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+    align-items: center;
+}
+
+.discount-code-input {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-primary);
+    font-size: 14px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.discount-submit-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--color-accent);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.discount-submit-btn:hover {
+    background-color: var(--color-accent-secondary);
+    transform: translateY(-2px);
+}
+
+.discount-feedback {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.discount-feedback.success {
+    color: #4CAF50;
+}
+
+.discount-feedback.error {
+    color: #F44336;
+}
+
+.discount-applied {
+    display: none;
+    color: #4CAF50;
+    font-weight: 600;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: var(--color-text-secondary);
+    font-size: 0.8em;
+    margin-right: 5px;
+}
