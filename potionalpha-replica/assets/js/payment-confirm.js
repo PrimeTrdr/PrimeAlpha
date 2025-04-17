@@ -107,6 +107,33 @@ class PaymentConfirmation {
         header.appendChild(title);
         header.appendChild(closeBtn);
 
+        // Add QR code section
+        const qrSection = document.createElement('div');
+        qrSection.className = 'payment-qr-section';
+        
+        const qrTitle = document.createElement('h4');
+        qrTitle.textContent = 'Scan QR Code to Pay';
+        qrTitle.className = 'qr-title';
+        
+        const qrContainer = document.createElement('div');
+        qrContainer.id = 'payment-qr-container';
+        qrContainer.className = 'payment-qr-container';
+        
+        // Create QR code element
+        const qrCode = document.createElement('div');
+        qrCode.id = 'lifetime-qr-code';
+        qrCode.className = 'payment-qr-code';
+        
+        // Add wallet address text
+        const walletAddress = document.createElement('div');
+        walletAddress.className = 'wallet-address';
+        walletAddress.innerHTML = '<p>Wallet Address:</p><code>GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p</code>';
+        
+        qrContainer.appendChild(qrCode);
+        qrSection.appendChild(qrTitle);
+        qrSection.appendChild(qrContainer);
+        qrSection.appendChild(walletAddress);
+
         // Create form
         const form = document.createElement('form');
         form.className = 'payment-confirm-form';
@@ -165,15 +192,10 @@ class PaymentConfirmation {
         planSelect.name = 'plan';
         planSelect.required = true;
 
-        const weeklyOption = document.createElement('option');
-        weeklyOption.value = 'weekly';
-        weeklyOption.textContent = 'Weekly ($250.00)';
-
         const lifetimeOption = document.createElement('option');
         lifetimeOption.value = 'lifetime';
         lifetimeOption.textContent = 'Lifetime ($2500.00)';
 
-        planSelect.appendChild(weeklyOption);
         planSelect.appendChild(lifetimeOption);
 
         planGroup.appendChild(planLabel);
@@ -245,12 +267,21 @@ class PaymentConfirmation {
 
         // Assemble modal
         modalContent.appendChild(header);
+        modalContent.appendChild(qrSection);
         modalContent.appendChild(form);
         modal.appendChild(modalContent);
 
         // Add to document
         document.body.appendChild(modal);
         this.modalCreated = true;
+        
+        // Generate QR code
+        if (typeof qrcode === 'function') {
+            const lifetimeQRCode = qrcode(0, 'L');
+            lifetimeQRCode.addData('solana:GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p?amount=2500&label=PrimeAlpha%20Lifetime&message=PrimeAlpha%20Lifetime%20Subscription');
+            lifetimeQRCode.make();
+            document.getElementById('lifetime-qr-code').innerHTML = lifetimeQRCode.createImgTag(5);
+        }
     }
 
     /**
