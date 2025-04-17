@@ -178,7 +178,74 @@ class PaymentConfirmation {
         walletAddress.style.marginTop = '8px';
         walletAddress.style.fontSize = '13px';
         walletAddress.style.color = 'rgba(255, 255, 255, 0.9)';
-        walletAddress.innerHTML = '<p style="margin: 0 0 4px 0;">Wallet Address:</p><code style="background-color: rgba(255, 255, 255, 0.15); padding: 4px 8px; border-radius: 4px; font-family: monospace; font-size: 11px; word-break: break-all; display: inline-block; width: 100%; max-width: 300px; overflow-x: auto;">GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p</code>';
+        
+        // Create wallet address container with copy button
+        const walletAddressContainer = document.createElement('div');
+        walletAddressContainer.style.display = 'flex';
+        walletAddressContainer.style.flexDirection = 'column';
+        walletAddressContainer.style.alignItems = 'center';
+        
+        const walletLabel = document.createElement('p');
+        walletLabel.style.margin = '0 0 4px 0';
+        walletLabel.textContent = 'Wallet Address:';
+        
+        const walletCodeContainer = document.createElement('div');
+        walletCodeContainer.style.display = 'flex';
+        walletCodeContainer.style.alignItems = 'center';
+        walletCodeContainer.style.width = '100%';
+        walletCodeContainer.style.maxWidth = '300px';
+        walletCodeContainer.style.position = 'relative';
+        
+        const walletCode = document.createElement('code');
+        walletCode.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+        walletCode.style.padding = '4px 8px';
+        walletCode.style.borderRadius = '4px';
+        walletCode.style.fontFamily = 'monospace';
+        walletCode.style.fontSize = '11px';
+        walletCode.style.wordBreak = 'break-all';
+        walletCode.style.display = 'inline-block';
+        walletCode.style.width = '100%';
+        walletCode.style.maxWidth = '300px';
+        walletCode.style.overflowX = 'auto';
+        walletCode.textContent = 'GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p';
+        
+        const copyButton = document.createElement('button');
+        copyButton.className = 'copy-wallet-button';
+        copyButton.style.position = 'absolute';
+        copyButton.style.right = '5px';
+        copyButton.style.top = '50%';
+        copyButton.style.transform = 'translateY(-50%)';
+        copyButton.style.backgroundColor = 'rgba(207, 126, 237, 0.3)';
+        copyButton.style.border = 'none';
+        copyButton.style.borderRadius = '4px';
+        copyButton.style.padding = '2px 6px';
+        copyButton.style.fontSize = '10px';
+        copyButton.style.color = 'white';
+        copyButton.style.cursor = 'pointer';
+        copyButton.textContent = 'Copy';
+        copyButton.onclick = () => {
+            const walletText = 'GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p';
+            navigator.clipboard.writeText(walletText)
+                .then(() => {
+                    copyButton.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copyButton.textContent = 'Copy';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy wallet address: ', err);
+                    // Fallback for browsers that don't support clipboard API
+                    this.fallbackCopyTextToClipboard(walletText, copyButton);
+                });
+        };
+        
+        walletCodeContainer.appendChild(walletCode);
+        walletCodeContainer.appendChild(copyButton);
+        
+        walletAddressContainer.appendChild(walletLabel);
+        walletAddressContainer.appendChild(walletCodeContainer);
+        
+        walletAddress.appendChild(walletAddressContainer);
         
         qrContainer.appendChild(qrCode);
         qrSection.appendChild(qrTitle);
@@ -440,13 +507,50 @@ class PaymentConfirmation {
     }
 
     /**
+     * Fallback method to copy text to clipboard for browsers that don't support clipboard API
+     * @param {string} text - Text to copy
+     * @param {HTMLElement} button - Button element to update text
+     */
+    fallbackCopyTextToClipboard(text, button) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        
+        // Make the textarea out of viewport
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        
+        textArea.focus();
+        textArea.select();
+        
+        try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            } else {
+                button.textContent = 'Failed!';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            }
+        } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
+            button.textContent = 'Failed!';
+            setTimeout(() => {
+                button.textContent = 'Copy';
+            }, 2000);
+        }
+        
+        document.body.removeChild(textArea);
+    }
+    /**
      * Handle form submission
      */
     handleFormSubmission() {
-        const form = document.getElementById('payment-confirm-form');
-        const resultDiv = document.getElementById('form-result');
-
-        // Get form data
         const formData = {
             name: form.elements['name'].value,
             email: form.elements['email'].value,
