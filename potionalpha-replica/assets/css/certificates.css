@@ -15,6 +15,47 @@
     bottom: 0;
     background: radial-gradient(circle at center, rgba(156, 39, 176, 0.15) 0%, rgba(233, 30, 99, 0.05) 70%, rgba(0, 0, 0, 0) 100%);
     pointer-events: none;
+    animation: gradientAnimation 8s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+        opacity: 0.5;
+    }
+    50% {
+        background-position: 100% 50%;
+        opacity: 0.8;
+    }
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.5;
+    }
+}
+
+.animated-gradient-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(-45deg, #9c27b0, #e91e63, #9c27b0, #e91e63);
+    background-size: 400% 400%;
+    opacity: 0.15;
+    animation: gradientMove 15s ease infinite;
+    z-index: 0;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .certificates-section h2 {
