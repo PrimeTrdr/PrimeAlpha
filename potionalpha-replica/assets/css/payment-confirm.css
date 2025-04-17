@@ -10,16 +10,19 @@
     z-index: 1000;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
 }
 
 .payment-confirm-content {
     background-color: rgba(19, 14, 28, 0.95);
-    border-radius: 24px;
-    width: 550px;
+    border-radius: 16px;
+    width: 450px;
     max-width: 90%;
+    max-height: 90vh;
     border: 1px solid rgba(207, 126, 237, 0.3);
     box-shadow: 0 8px 25px rgba(207, 126, 237, 0.3);
-    overflow: hidden;
+    overflow-y: auto;
+    margin: 20px auto;
 }
 
 .payment-confirm-header {
@@ -168,9 +171,30 @@
 }
 
 /* Responsive Adjustments */
+@media (max-width: 992px) {
+    .payment-confirm-content {
+        width: 80%;
+        max-width: 500px;
+    }
+}
+
 @media (max-width: 768px) {
     .payment-confirm-content {
         width: 90%;
+        max-width: 450px;
+    }
+    
+    .payment-confirm-header h3 {
+        font-size: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group label {
+        margin-bottom: 6px;
+        font-size: 14px;
     }
     
     .form-group input,
@@ -178,10 +202,60 @@
     .form-group textarea {
         padding: 10px 14px;
         font-size: 14px;
+        border-radius: 10px;
+    }
+    
+    .form-group .help-text {
+        font-size: 12px;
     }
     
     .btn-submit {
         padding: 12px 24px;
         font-size: 14px;
+    }
+    
+    .payment-qr-code img {
+        max-width: 150px;
+    }
+    
+    .wallet-address code {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-confirm-content {
+        width: 95%;
+        border-radius: 16px;
+    }
+    
+    .payment-confirm-header {
+        padding: 15px;
+    }
+    
+    .payment-confirm-header h3 {
+        font-size: 18px;
+    }
+    
+    .payment-confirm-form {
+        padding: 15px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+    
+    .btn-submit {
+        padding: 10px 20px;
+        font-size: 13px;
+        border-radius: 10px;
+    }
+    
+    .payment-qr-code img {
+        max-width: 120px;
     }
 }

@@ -85,21 +85,52 @@ class PaymentConfirmation {
         const modal = document.createElement('div');
         modal.id = 'payment-confirm-modal';
         modal.className = 'payment-confirm-modal';
+        modal.style.display = 'none';
+        modal.style.position = 'fixed';
+        modal.style.zIndex = '9999';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        modal.style.justifyContent = 'center';
+        modal.style.alignItems = 'center';
+        modal.style.overflowY = 'auto';
 
         // Create modal content
         const modalContent = document.createElement('div');
         modalContent.className = 'payment-confirm-content';
+        modalContent.style.backgroundColor = 'rgba(19, 14, 28, 0.95)';
+        modalContent.style.borderRadius = '16px';
+        modalContent.style.width = '400px';
+        modalContent.style.maxWidth = '90%';
+        modalContent.style.maxHeight = '90vh';
+        modalContent.style.margin = '20px auto';
+        modalContent.style.overflowY = 'auto';
+        modalContent.style.border = '1px solid rgba(207, 126, 237, 0.3)';
 
         // Add header
         const header = document.createElement('div');
         header.className = 'payment-confirm-header';
+        header.style.display = 'flex';
+        header.style.justifyContent = 'space-between';
+        header.style.padding = '15px';
+        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
 
         const title = document.createElement('h3');
         title.textContent = 'Confirm Your Payment';
+        title.style.margin = '0';
+        title.style.color = 'white';
+        title.style.fontSize = '20px';
 
         const closeBtn = document.createElement('button');
         closeBtn.className = 'payment-confirm-close';
         closeBtn.textContent = '×';
+        closeBtn.style.background = 'none';
+        closeBtn.style.border = 'none';
+        closeBtn.style.color = 'white';
+        closeBtn.style.fontSize = '24px';
+        closeBtn.style.cursor = 'pointer';
         closeBtn.onclick = () => {
             document.getElementById('payment-confirm-modal').style.display = 'none';
         };
@@ -110,24 +141,44 @@ class PaymentConfirmation {
         // Add QR code section
         const qrSection = document.createElement('div');
         qrSection.className = 'payment-qr-section';
+        qrSection.style.padding = '15px';
+        qrSection.style.textAlign = 'center';
+        qrSection.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+        qrSection.style.display = 'block';
+        qrSection.style.visibility = 'visible';
         
         const qrTitle = document.createElement('h4');
         qrTitle.textContent = 'Scan QR Code to Pay';
         qrTitle.className = 'qr-title';
+        qrTitle.style.margin = '0 0 10px 0';
+        qrTitle.style.color = 'white';
+        qrTitle.style.fontSize = '16px';
         
         const qrContainer = document.createElement('div');
         qrContainer.id = 'payment-qr-container';
         qrContainer.className = 'payment-qr-container';
+        qrContainer.style.display = 'flex';
+        qrContainer.style.justifyContent = 'center';
+        qrContainer.style.marginBottom = '10px';
+        qrContainer.style.visibility = 'visible';
         
         // Create QR code element
         const qrCode = document.createElement('div');
         qrCode.id = 'lifetime-qr-code';
         qrCode.className = 'payment-qr-code';
+        qrCode.style.backgroundColor = 'white';
+        qrCode.style.padding = '10px';
+        qrCode.style.borderRadius = '8px';
+        qrCode.style.display = 'inline-block';
+        qrCode.style.visibility = 'visible';
         
         // Add wallet address text
         const walletAddress = document.createElement('div');
         walletAddress.className = 'wallet-address';
-        walletAddress.innerHTML = '<p>Wallet Address:</p><code>GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p</code>';
+        walletAddress.style.marginTop = '8px';
+        walletAddress.style.fontSize = '13px';
+        walletAddress.style.color = 'rgba(255, 255, 255, 0.9)';
+        walletAddress.innerHTML = '<p style="margin: 0 0 4px 0;">Wallet Address:</p><code style="background-color: rgba(255, 255, 255, 0.15); padding: 4px 8px; border-radius: 4px; font-family: monospace; font-size: 11px; word-break: break-all; display: inline-block; width: 100%; max-width: 300px; overflow-x: auto;">GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p</code>';
         
         qrContainer.appendChild(qrCode);
         qrSection.appendChild(qrTitle);
@@ -289,18 +340,103 @@ class PaymentConfirmation {
      * @param {string} transactionId - Optional transaction ID to pre-fill
      */
     showConfirmationForm(transactionId = '') {
+        console.log('Showing confirmation form');
+        
         // Create modal if it doesn't exist
         if (!this.modalCreated) {
+            console.log('Modal not created yet, creating now');
             this.createConfirmationModal();
         }
 
         // Pre-fill transaction ID if provided
         if (transactionId) {
-            document.getElementById('confirm-transaction-id').value = transactionId;
+            const txField = document.getElementById('confirm-transaction-id');
+            if (txField) {
+                txField.value = transactionId;
+            }
         }
 
         // Show modal
-        document.getElementById('payment-confirm-modal').style.display = 'flex';
+        const modal = document.getElementById('payment-confirm-modal');
+        if (modal) {
+            console.log('Modal found, displaying');
+            modal.style.display = 'flex';
+            
+            // Ensure QR code is visible
+            const qrSection = modal.querySelector('.payment-qr-section');
+            if (qrSection) {
+                qrSection.style.display = 'block';
+                qrSection.style.visibility = 'visible';
+                qrSection.style.opacity = '1';
+            }
+            
+            const qrCode = modal.querySelector('.payment-qr-code');
+            if (qrCode) {
+                qrCode.style.display = 'inline-block';
+                qrCode.style.visibility = 'visible';
+                qrCode.style.opacity = '1';
+                qrCode.style.backgroundColor = 'white';
+            }
+            
+            // Generate QR code if needed
+            if (typeof qrcode === 'function') {
+                try {
+                    const lifetimeQRCode = qrcode(0, 'L');
+                    lifetimeQRCode.addData('solana:GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p?amount=2500&label=PrimeAlpha%20Lifetime&message=PrimeAlpha%20Lifetime%20Subscription');
+                    lifetimeQRCode.make();
+                    const qrCodeElement = document.getElementById('lifetime-qr-code');
+                    if (qrCodeElement) {
+                        qrCodeElement.innerHTML = lifetimeQRCode.createImgTag(5);
+                        const qrImg = qrCodeElement.querySelector('img');
+                        if (qrImg) {
+                            qrImg.style.display = 'block';
+                            qrImg.style.visibility = 'visible';
+                            qrImg.style.opacity = '1';
+                            qrImg.style.margin = '0 auto';
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error generating QR code:', e);
+                    // Fallback QR code
+                    const qrCodeElement = document.getElementById('lifetime-qr-code');
+                    if (qrCodeElement) {
+                        qrCodeElement.innerHTML = '<div style="width:150px;height:150px;background-color:white;display:flex;align-items:center;justify-content:center;margin:0 auto;"><p style="color:black;font-size:12px;text-align:center;">QR Code<br>GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p</p></div>';
+                    }
+                }
+            }
+        } else {
+            console.error('Payment confirmation modal not found in DOM');
+            // Try to recreate the modal if it doesn't exist
+            this.modalCreated = false;
+            this.createConfirmationModal();
+            const recreatedModal = document.getElementById('payment-confirm-modal');
+            if (recreatedModal) {
+                recreatedModal.style.display = 'flex';
+                // Try to generate QR code again
+                if (typeof qrcode === 'function') {
+                    try {
+                        const lifetimeQRCode = qrcode(0, 'L');
+                        lifetimeQRCode.addData('solana:GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p?amount=2500&label=PrimeAlpha%20Lifetime&message=PrimeAlpha%20Lifetime%20Subscription');
+                        lifetimeQRCode.make();
+                        const qrCodeElement = document.getElementById('lifetime-qr-code');
+                        if (qrCodeElement) {
+                            qrCodeElement.innerHTML = lifetimeQRCode.createImgTag(5);
+                            const qrImg = qrCodeElement.querySelector('img');
+                            if (qrImg) {
+                                qrImg.style.display = 'block';
+                                qrImg.style.visibility = 'visible';
+                                qrImg.style.opacity = '1';
+                                qrImg.style.margin = '0 auto';
+                            }
+                        }
+                    } catch (e) {
+                        console.error('Error generating QR code:', e);
+                    }
+                }
+            } else {
+                console.error('Failed to create modal');
+            }
+        }
     }
 
     /**

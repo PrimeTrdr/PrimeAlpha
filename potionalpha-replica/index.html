@@ -469,5 +469,41 @@
             });
         });
     </script>
+    <!-- Botón de confirmación de pago directo -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Inicializando botones de confirmación de pago');
+            
+            // Crear instancia del sistema de confirmación de pago
+            if (typeof PaymentConfirmation === 'function') {
+                window.paymentConfirmation = new PaymentConfirmation();
+                console.log('Sistema de confirmación de pago inicializado');
+            } else {
+                console.error('PaymentConfirmation no está definido');
+            }
+            
+            // Añadir evento click a todos los botones de "Confirm Your Payment"
+            const confirmButtons = document.querySelectorAll('.btn-confirm-payment, .payment-confirm-link, .footer-link');
+            console.log('Botones encontrados:', confirmButtons.length);
+            
+            confirmButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Botón de confirmación de pago clickeado');
+                    if (window.paymentConfirmation) {
+                        window.paymentConfirmation.showConfirmationForm();
+                    } else {
+                        console.error('Sistema de confirmación de pago no inicializado');
+                        // Intentar inicializar si no existe
+                        if (typeof PaymentConfirmation === 'function') {
+                            window.paymentConfirmation = new PaymentConfirmation();
+                            window.paymentConfirmation.showConfirmationForm();
+                        }
+                    }
+                });
+                console.log('Evento click añadido a botón:', button);
+            });
+        });
+    </script>
 </body>
 </html>

@@ -42,18 +42,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 dots: true,
                 infinite: true,
                 speed: 500,
-                slidesToShow: 1,
+                slidesToShow: 3,
                 slidesToScroll: 1,
-                autoplay: true,
+                autoplay: false,
                 autoplaySpeed: 3000,
+                centerMode: false,
+                variableWidth: false,
+                arrows: true,
+                adaptiveHeight: false,
+                swipe: true,
+                touchMove: true,
+                draggable: true,
                 responsive: [
                     {
-                        breakpoint: 1024,
+                        breakpoint: 1200,
                         settings: {
-                            slidesToShow: 1,
+                            slidesToShow: 3,
                             slidesToScroll: 1,
                             infinite: true,
                             dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
                         }
                     },
                     {
