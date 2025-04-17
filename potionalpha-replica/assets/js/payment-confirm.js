@@ -196,6 +196,8 @@ class PaymentConfirmation {
         walletCodeContainer.style.maxWidth = '300px';
         walletCodeContainer.style.position = 'relative';
         
+        const walletText = 'GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p';
+        
         const walletCode = document.createElement('code');
         walletCode.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
         walletCode.style.padding = '4px 8px';
@@ -204,40 +206,62 @@ class PaymentConfirmation {
         walletCode.style.fontSize = '11px';
         walletCode.style.wordBreak = 'break-all';
         walletCode.style.display = 'inline-block';
-        walletCode.style.width = '100%';
-        walletCode.style.maxWidth = '300px';
+        walletCode.style.width = 'calc(100% - 50px)';
+        walletCode.style.maxWidth = '250px';
         walletCode.style.overflowX = 'auto';
-        walletCode.textContent = 'GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p';
+        walletCode.textContent = walletText;
         
         const copyButton = document.createElement('button');
         copyButton.className = 'copy-wallet-button';
-        copyButton.style.position = 'absolute';
-        copyButton.style.right = '5px';
-        copyButton.style.top = '50%';
-        copyButton.style.transform = 'translateY(-50%)';
-        copyButton.style.backgroundColor = 'rgba(207, 126, 237, 0.3)';
+        copyButton.style.marginLeft = '8px';
+        copyButton.style.background = 'linear-gradient(90deg, #9c44ff 0%, #6a11cb 100%)';
         copyButton.style.border = 'none';
         copyButton.style.borderRadius = '4px';
-        copyButton.style.padding = '2px 6px';
-        copyButton.style.fontSize = '10px';
+        copyButton.style.padding = '4px 8px';
+        copyButton.style.fontSize = '11px';
         copyButton.style.color = 'white';
         copyButton.style.cursor = 'pointer';
+        copyButton.style.fontWeight = 'bold';
+        copyButton.style.minWidth = '50px';
+        copyButton.style.textAlign = 'center';
         copyButton.textContent = 'Copy';
-        copyButton.onclick = () => {
-            const walletText = 'GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p';
-            navigator.clipboard.writeText(walletText)
-                .then(() => {
+        
+        // Direct copy function without using class methods
+        copyButton.addEventListener('click', function() {
+            // Create a temporary input element
+            const tempInput = document.createElement('input');
+            tempInput.value = walletText;
+            document.body.appendChild(tempInput);
+            
+            // Select the text
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); // For mobile devices
+            
+            // Execute copy command
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
                     copyButton.textContent = 'Copied!';
-                    setTimeout(() => {
+                    setTimeout(function() {
                         copyButton.textContent = 'Copy';
                     }, 2000);
-                })
-                .catch(err => {
-                    console.error('Failed to copy wallet address: ', err);
-                    // Fallback for browsers that don't support clipboard API
-                    this.fallbackCopyTextToClipboard(walletText, copyButton);
-                });
-        };
+                } else {
+                    copyButton.textContent = 'Failed!';
+                    setTimeout(function() {
+                        copyButton.textContent = 'Copy';
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Error copying text: ', err);
+                copyButton.textContent = 'Failed!';
+                setTimeout(function() {
+                    copyButton.textContent = 'Copy';
+                }, 2000);
+            }
+            
+            // Remove the temporary element
+            document.body.removeChild(tempInput);
+        });
         
         walletCodeContainer.appendChild(walletCode);
         walletCodeContainer.appendChild(copyButton);

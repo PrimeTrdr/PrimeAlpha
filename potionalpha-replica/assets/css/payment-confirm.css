@@ -103,7 +103,7 @@
 }
 
 .btn-submit {
-    background: linear-gradient(135deg, #7b3fe4 0%, #cf7eed 100%);
+    background: linear-gradient(90deg, #9c44ff 0%, #6a11cb 100%);
     color: white;
     border: none;
     padding: 14px 32px;
@@ -149,9 +149,23 @@
 }
 
 /* Notification Badge Styles */
-.notification-badge {
-    position: relative;
-    display: inline-block;
+.copy-wallet-button {
+    background: linear-gradient(90deg, #9c44ff 0%, #6a11cb 100%);
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 50px;
+    text-align: center;
+}
+
+.copy-wallet-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(123, 63, 228, 0.4);
 }
 
 .notification-badge .badge {
