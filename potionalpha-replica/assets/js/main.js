@@ -21,27 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Checkout functionality
-    const weeklyCheckoutBtn = document.getElementById('weekly-checkout-btn');
     const lifetimeCheckoutBtn = document.getElementById('lifetime-checkout-btn');
-    const weeklyCheckout = document.getElementById('checkout-weekly');
     const lifetimeCheckout = document.getElementById('checkout-lifetime');
-    
-    if (weeklyCheckoutBtn) {
-        weeklyCheckoutBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            weeklyCheckout.style.display = 'block';
-            lifetimeCheckout.style.display = 'none';
-            
-            // Smooth scroll to checkout section
-            weeklyCheckout.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
     
     if (lifetimeCheckoutBtn) {
         lifetimeCheckoutBtn.addEventListener('click', function(e) {
             e.preventDefault();
             lifetimeCheckout.style.display = 'block';
-            weeklyCheckout.style.display = 'none';
             
             // Smooth scroll to checkout section
             lifetimeCheckout.scrollIntoView({ behavior: 'smooth' });
@@ -54,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
     backLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            weeklyCheckout.style.display = 'none';
             lifetimeCheckout.style.display = 'none';
             
             // Smooth scroll to pricing section
@@ -62,11 +47,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Transaction links
+    const transactionLinks = document.querySelectorAll('.transaction-link');
+    
+    transactionLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.paymentConfirmation) {
+                window.paymentConfirmation.showConfirmationForm();
+            }
+        });
+    });
+
     // Solana Pay functionality
     const RECIPIENT_ADDRESS = 'GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p';
     
     const PRICES = {
-        weekly: 250,  // $250.00
         lifetime: 2500 // $2500.00
     };
     
@@ -76,13 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Set up payment links
-    const weeklyPayLink = document.getElementById('weekly-pay-link');
     const lifetimePayLink = document.getElementById('lifetime-pay-link');
-    
-    if (weeklyPayLink) {
-        const weeklyPayUrl = generateSolanaPayUrl(PRICES.weekly, RECIPIENT_ADDRESS);
-        weeklyPayLink.setAttribute('href', weeklyPayUrl);
-    }
     
     if (lifetimePayLink) {
         const lifetimePayUrl = generateSolanaPayUrl(PRICES.lifetime, RECIPIENT_ADDRESS);

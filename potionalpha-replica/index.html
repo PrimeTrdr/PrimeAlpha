@@ -214,8 +214,11 @@
             <h2>Trading Results</h2>
             <p class="section-subtitle">See the incredible returns achieved by our AI-powered trading bot</p>
             
-            <div class="certificates-carousel">
+            <div id="certificates-container" class="certificates-carousel">
                 <!-- Certificate templates will be loaded here -->
+                <div class="certificate-placeholder">
+                    <p>Esperando nuevos certificados...</p>
+                </div>
             </div>
         </div>
     </section>
@@ -231,25 +234,6 @@
             </div>
             
             <div class="pricing-plans">
-                <!-- Weekly Plan -->
-                <div class="pricing-card">
-                    <div class="plan-header">
-                        <h3>Weekly</h3>
-                        <span class="plan-tag">Keep Growing!</span>
-                    </div>
-                    <div class="plan-price">
-                        <span class="price">$250.00</span>
-                        <span class="period">/per week</span>
-                    </div>
-                    <ul class="plan-features">
-                        <li>Full access to automated trading bot</li>
-                        <li>Automatic trade execution</li>
-                        <li>Real-time alerts and notifications</li>
-                        <li>Access to community Discord</li>
-                    </ul>
-                    <a href="#checkout-weekly" class="btn-primary" id="weekly-checkout-btn">Get Started</a>
-                </div>
-                
                 <!-- Lifetime Plan -->
                 <div class="pricing-card">
                     <div class="plan-header">
@@ -261,7 +245,9 @@
                         <span class="period">one-time payment</span>
                     </div>
                     <ul class="plan-features">
-                        <li>All features in the Weekly plan</li>
+                        <li>Full access to automated trading bot</li>
+                        <li>Automatic trade execution</li>
+                        <li>Real-time alerts and notifications</li>
                         <li>Priority alert delivery</li>
                         <li>Advanced bot strategy customization</li>
                         <li>Access to VIP Discord channel</li>
@@ -273,42 +259,7 @@
         </div>
     </section>
 
-    <!-- Checkout Section (Hidden by default) -->
-    <section id="checkout-weekly" class="checkout" style="display: none;">
-        <div class="container">
-            <h2>Complete Your Purchase</h2>
-            <p class="section-subtitle">Weekly Plan - Pay with Solana</p>
-            
-            <div class="checkout-container">
-                <div class="checkout-card">
-                    <div class="checkout-header">
-                        <h3>Weekly Plan Checkout</h3>
-                    </div>
-                    <div class="checkout-details">
-                        <p>Plan: <span>Weekly</span></p>
-                        <p>Price: <span>$250.00</span></p>
-                        <p>Recipient: <span class="recipient-address">GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p</span> <button class="copy-address-btn" data-address="GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p">Copy</button></p>
-                    </div>
-                    <div class="checkout-qr">
-                        <div class="qr-container" id="weekly-qr-code">
-                            <!-- QR code will be inserted here by JavaScript -->
-                        </div>
-                        <p>Scan with a Solana wallet app to pay</p>
-                    </div>
-                    <div class="checkout-actions">
-                        <button class="btn-primary confirm-payment-btn">Confirm Your Payment</button>
-                        <p class="checkout-note">After sending payment, click to submit your transaction details</p>
-                    </div>
-                    <div class="checkout-footer">
-                        <p>After payment, please contact support with your transaction ID to activate your account.</p>
-                        <a href="#pricing" class="back-link">← Back to Plans</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lifetime Checkout Section (Hidden by default) -->
+    <!-- Checkout Section -->
     <section id="checkout-lifetime" class="checkout" style="display: none;">
         <div class="container">
             <h2>Complete Your Purchase</h2>
@@ -335,8 +286,9 @@
                         <p class="checkout-note">After sending payment, click to submit your transaction details</p>
                     </div>
                     <div class="checkout-footer">
-                        <p>After payment, please submit your transaction ID to activate your account.</p>
+                        <p>After payment, please contact support with your transaction ID to activate your account.</p>
                         <a href="#pricing" class="back-link">← Back to Plans</a>
+                        <a href="#" class="transaction-link">Already paid? Submit your transaction ID here</a>
                     </div>
                 </div>
             </div>
@@ -352,38 +304,68 @@
             <div class="faq-grid">
                 <!-- FAQ Item 1 -->
                 <div class="faq-item">
-                    <h3>How does the automated trading bot work?</h3>
-                    <p>Our bot uses a combination of technical analysis, on-chain data, and social sentiment to identify high-potential trading opportunities. Once identified, it automatically executes trades at optimal entry points and manages positions with dynamic exit strategies based on market conditions. The bot operates 24/7, ensuring you never miss profitable opportunities even while you're sleeping or busy with other activities.</p>
+                    <div class="faq-question">
+                        <h3>How does the automated trading bot work?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our bot uses a combination of technical analysis, on-chain data, and social sentiment to identify high-potential trading opportunities. Once identified, it automatically executes trades at optimal entry points and manages positions with dynamic exit strategies based on market conditions. The bot operates 24/7, ensuring you never miss profitable opportunities even while you're sleeping or busy with other activities.</p>
+                    </div>
                 </div>
                 
                 <!-- FAQ Item 2 -->
                 <div class="faq-item">
-                    <h3>What kind of returns can I expect?</h3>
-                    <p>While we cannot guarantee specific returns as cryptocurrency markets are inherently volatile, our members typically see 15-30% monthly returns during normal market conditions. During bull markets, these returns can be significantly higher. The key advantage of our system is consistent performance across different market conditions through diversified strategies and risk management.</p>
+                    <div class="faq-question">
+                        <h3>What kind of returns can I expect?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While we cannot guarantee specific returns as cryptocurrency markets are inherently volatile, our members typically see 15-30% monthly returns during normal market conditions. During bull markets, these returns can be significantly higher. The key advantage of our system is consistent performance across different market conditions through diversified strategies and risk management.</p>
+                    </div>
                 </div>
                 
                 <!-- FAQ Item 3 -->
                 <div class="faq-item">
-                    <h3>How do I get started with PrimeAlpha?</h3>
-                    <p>Getting started is simple: select your preferred subscription plan, complete the payment using Solana, and you'll receive access credentials within 24 hours. Our onboarding process includes a comprehensive guide to help you set up alerts, configure the bot according to your risk tolerance, and understand how to interpret the signals and recommendations.</p>
+                    <div class="faq-question">
+                        <h3>How do I get started with PrimeAlpha?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Getting started is simple: select your preferred subscription plan, complete the payment using Solana, and you'll receive access credentials within 24 hours. Our onboarding process includes a comprehensive guide to help you set up alerts, configure the bot according to your risk tolerance, and understand how to interpret the signals and recommendations.</p>
+                    </div>
                 </div>
                 
                 <!-- FAQ Item 4 -->
                 <div class="faq-item">
-                    <h3>Can I cancel my subscription?</h3>
-                    <p>Yes, you can cancel your subscription at any time. Since we offer weekly and monthly plans without long-term commitments, you have complete flexibility. There are no cancellation fees or hidden charges. Your access will remain active until the end of your current billing period.</p>
+                    <div class="faq-question">
+                        <h3>Can I cancel my subscription?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel your subscription at any time. Since we offer subscription plans without long-term commitments, you have complete flexibility. There are no cancellation fees or hidden charges. Your access will remain active until the end of your current billing period.</p>
+                    </div>
                 </div>
                 
                 <!-- FAQ Item 5 -->
                 <div class="faq-item">
-                    <h3>What wallets do you support for payment?</h3>
-                    <p>We support all major Solana wallets including Phantom, Solflare, Backpack, and Glow. You can pay directly through our website using the wallet connection feature, or manually send SOL to our payment address. After payment, simply submit your transaction ID through our confirmation form to activate your account.</p>
+                    <div class="faq-question">
+                        <h3>What wallets do you support for payment?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We support all major Solana wallets including Phantom, Solflare, Backpack, and Glow. You can pay directly through our website using the wallet connection feature, or manually send SOL to our payment address. After payment, simply submit your transaction ID through our confirmation form to activate your account.</p>
+                    </div>
                 </div>
                 
                 <!-- FAQ Item 6 -->
                 <div class="faq-item">
-                    <h3>Is technical knowledge required to use PrimeAlpha?</h3>
-                    <p>No, PrimeAlpha is designed to be user-friendly for both beginners and experienced traders. Our interface provides clear signals and recommendations that anyone can follow. For those who want deeper insights, we also provide advanced analytics and customization options. Additionally, our Discord community and support team are always available to help with any questions.</p>
+                    <div class="faq-question">
+                        <h3>Is technical knowledge required to use PrimeAlpha?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, PrimeAlpha is designed to be user-friendly for both beginners and experienced traders. Our interface provides clear signals and recommendations that anyone can follow. For those who want deeper insights, we also provide advanced analytics and customization options. Additionally, our Discord community and support team are always available to help with any questions.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -424,6 +406,7 @@
     <script src="assets/js/wallet-connector.js"></script>
     <script src="assets/js/payment-confirm.js"></script>
     <script src="assets/js/test-payment-confirm.js"></script>
+    <script src="assets/js/load-certificates.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Generate QR codes for checkout
