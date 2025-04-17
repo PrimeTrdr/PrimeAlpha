@@ -1,0 +1,86 @@
+<!-- High Returns Banner -->
+<div class="high-returns-banner">
+    ¡Genera entre <span class="returns-percentage">15%</span> y <span class="returns-percentage">35%</span> de ganancias DIARIAS con nuestro bot de trading automatizado!
+</div>
+
+<!-- Daily Returns Card -->
+<div class="daily-returns-card">
+    <div class="daily-returns-icon">
+        <img src="assets/images/icons/high-returns-icon.svg" alt="Altos Rendimientos">
+    </div>
+    <h3 class="daily-returns-title">Rendimientos Diarios Excepcionales</h3>
+    <div class="daily-returns-value">15% - 35% DIARIO</div>
+    <p class="daily-returns-description">Nuestro bot de trading automatizado para Solana genera rendimientos diarios sin precedentes en el mercado. Con una inversión mínima de 1 SOL, verás crecer tu capital exponencialmente mientras nuestro sistema opera por ti las 24 horas del día.</p>
+</div>
+
+<!-- Profit Calculator -->
+<div class="profit-calculator">
+    <h3 class="profit-calculator-title">Calculadora de Ganancias</h3>
+    <div class="calculator-form">
+        <div class="form-group">
+            <label for="investment-amount">Inversión Inicial (SOL)</label>
+            <input type="number" id="investment-amount" min="1" value="1" placeholder="Ingresa tu inversión inicial">
+        </div>
+        <div class="form-group">
+            <label for="investment-days">Días de Inversión</label>
+            <input type="number" id="investment-days" min="1" value="7" placeholder="Número de días">
+        </div>
+        <div class="form-group">
+            <label for="daily-return">Rendimiento Diario (%)</label>
+            <input type="number" id="daily-return" min="15" max="35" value="20" placeholder="Rendimiento diario esperado">
+        </div>
+    </div>
+    <div class="calculator-results">
+        <div class="result-item">
+            <span class="result-label">Inversión Inicial:</span>
+            <span class="result-value" id="initial-investment">1 SOL</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Ganancias Diarias:</span>
+            <span class="result-value" id="daily-profit">0.2 SOL</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Ganancias Totales (7 días):</span>
+            <span class="result-value" id="total-profit">1.4 SOL</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Balance Final:</span>
+            <span class="result-value highlight" id="final-balance">2.4 SOL</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const investmentAmount = document.getElementById('investment-amount');
+        const investmentDays = document.getElementById('investment-days');
+        const dailyReturn = document.getElementById('daily-return');
+        
+        const initialInvestment = document.getElementById('initial-investment');
+        const dailyProfit = document.getElementById('daily-profit');
+        const totalProfit = document.getElementById('total-profit');
+        const finalBalance = document.getElementById('final-balance');
+        
+        function calculateProfit() {
+            const amount = parseFloat(investmentAmount.value) || 1;
+            const days = parseInt(investmentDays.value) || 7;
+            const returnRate = parseFloat(dailyReturn.value) || 20;
+            
+            const dailyProfitValue = amount * (returnRate / 100);
+            const totalProfitValue = dailyProfitValue * days;
+            const finalBalanceValue = amount + totalProfitValue;
+            
+            initialInvestment.textContent = amount.toFixed(2) + ' SOL';
+            dailyProfit.textContent = dailyProfitValue.toFixed(2) + ' SOL';
+            totalProfit.textContent = totalProfitValue.toFixed(2) + ' SOL';
+            finalBalance.textContent = finalBalanceValue.toFixed(2) + ' SOL';
+        }
+        
+        investmentAmount.addEventListener('input', calculateProfit);
+        investmentDays.addEventListener('input', calculateProfit);
+        dailyReturn.addEventListener('input', calculateProfit);
+        
+        // Initial calculation
+        calculateProfit();
+    });
+</script>

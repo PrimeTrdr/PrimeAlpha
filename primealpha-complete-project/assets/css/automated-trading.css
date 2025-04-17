@@ -1,0 +1,223 @@
+.automated-trading-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #1a0b2e 0%, #2a1a4a 100%);
+    color: white;
+}
+
+.automated-trading-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.automated-trading-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.automated-trading-title h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.automated-trading-title p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.automated-trading-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+.automated-trading-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.automated-trading-heading {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+    background: linear-gradient(135deg, #8a2be2 0%, #4a00e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.automated-trading-description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 25px;
+}
+
+.automated-trading-highlight {
+    background: rgba(138, 43, 226, 0.1);
+    border-left: 3px solid #8a2be2;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border-radius: 0 8px 8px 0;
+}
+
+.automated-trading-highlight p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+.automated-trading-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.automated-trading-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.benefits-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.benefit-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 25px;
+    width: calc(33.333% - 20px);
+    min-width: 280px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.benefit-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(138, 43, 226, 0.2);
+    border-radius: 50%;
+}
+
+.benefit-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.benefit-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.benefit-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.performance-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 25px;
+    width: calc(25% - 20px);
+    min-width: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #8a2be2 0%, #4a00e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.automated-trading-cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.automated-trading-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #8a2be2 0%, #4a00e0 100%);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(74, 0, 224, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.automated-trading-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(74, 0, 224, 0.5);
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .benefit-card {
+        width: calc(50% - 15px);
+    }
+    
+    .stat-card {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .benefit-card {
+        width: 100%;
+    }
+    
+    .stat-card {
+        width: 100%;
+    }
+    
+    .automated-trading-content {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,248 @@
+.certificates-section {
+    padding: 50px 0;
+    background: linear-gradient(135deg, #2a1a4a 0%, #1a0b2e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.certificates-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(74, 0, 224, 0.3) 0%, rgba(138, 43, 226, 0.3) 100%);
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite;
+    z-index: 1;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.certificates-container {
+    position: relative;
+    z-index: 2;
+}
+
+.certificates-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.certificates-title h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.certificates-title p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.certificates-carousel {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.certificate-item {
+    text-align: center;
+    padding: 0;
+    margin: 0 5px;
+    position: relative;
+    display: inline-block !important;
+    box-shadow: none !important;
+    background: none !important;
+    filter: none !important;
+    border: none !important;
+    width: 30% !important;
+    max-width: 250px !important;
+}
+
+.certificate-item img {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 120px !important;
+    border-radius: 0 !important;
+    display: inline-block !important;
+    position: relative;
+    z-index: 2;
+    box-shadow: none !important;
+    filter: none !important;
+    border: none !important;
+    background: none !important;
+}
+
+/* No shadows or auras */
+
+.slick-prev, .slick-next {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 20px;
+    opacity: 1;
+}
+
+.slick-prev {
+    left: 10px;
+}
+
+.slick-next {
+    right: 10px;
+}
+
+.slick-dots li button:before {
+    color: white;
+    opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+    color: white;
+    opacity: 1;
+}
+
+/* Loading state */
+.certificates-loading {
+    text-align: center;
+    padding: 50px 0;
+    color: white;
+}
+
+.certificates-loading p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error state */
+.certificates-error {
+    text-align: center;
+    padding: 50px 0;
+    color: white;
+}
+
+.certificates-error p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #f87171;
+}
+
+.retry-button {
+    background: linear-gradient(135deg, #4a00e0 0%, #8a2be2 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 0, 224, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .certificates-carousel {
+        max-width: 90%;
+    }
+    
+    .certificate-item img {
+        max-height: 280px;
+    }
+}
+
+@media (max-width: 992px) {
+    .certificates-carousel {
+        max-width: 95%;
+    }
+    
+    .certificate-item img {
+        max-height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .certificates-section {
+        padding: 60px 0;
+    }
+    
+    .certificates-title h2 {
+        font-size: 28px;
+    }
+    
+    .certificates-title p {
+        font-size: 16px;
+    }
+    
+    .certificates-carousel {
+        padding: 0 10px;
+    }
+    
+    .certificate-item img {
+        max-height: 220px;
+    }
+    
+    .slick-prev {
+        left: 5px;
+    }
+    
+    .slick-next {
+        right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .certificates-section {
+        padding: 40px 0;
+    }
+    
+    .certificates-title h2 {
+        font-size: 24px;
+    }
+    
+    .certificates-title p {
+        font-size: 14px;
+    }
+    
+    .certificate-item img {
+        max-height: 180px;
+    }
+}
