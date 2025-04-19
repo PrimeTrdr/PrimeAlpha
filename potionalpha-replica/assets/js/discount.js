@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Original prices in USD
     const ORIGINAL_PRICES = {
         weekly: 250,   // $250 USD
-        monthly: 2500  // $2500 USD
+        monthly: 1500  // $1500 USD
     };
     
     // Function to calculate discounted price

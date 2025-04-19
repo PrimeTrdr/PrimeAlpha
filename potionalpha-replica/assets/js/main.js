@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const RECIPIENT_ADDRESS = 'GTt4f9gGukB1i7YQMoYJnDdptoEpdTPcMZztBuF3SZ8p';
     
     const PRICES = {
-        lifetime: 2500 // $2500.00
+        lifetime: 1500 // $1500.00
     };
     
     function generateSolanaPayUrl(amount, recipient) {

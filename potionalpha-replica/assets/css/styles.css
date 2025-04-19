@@ -483,87 +483,6 @@ p {
     font-size: 14px;
 }
 
-/* Testimonials Section */
-.testimonials {
-    padding: 80px 0; /* Reducido de 100px 0 */
-    background-color: rgba(12, 5, 18, 0.7);
-    overflow: hidden; /* Para contener las animaciones */
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Reducido de 300px */
-    gap: 25px; /* Reducido de 30px */
-    margin-top: 40px; /* Reducido de 60px */
-    position: relative;
-}
-
-.testimonial-card {
-    background-color: rgba(19, 14, 28, 0.5);
-    border-radius: var(--border-radius);
-    padding: 25px; /* Reducido de 30px */
-    transition: all 0.3s ease;
-    border: 1px solid var(--color-border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    animation-duration: 10s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    position: relative;
-}
-
-.testimonial-card:nth-child(1) {
-    animation-name: floatUp;
-    animation-delay: 0s;
-}
-
-.testimonial-card:nth-child(2) {
-    animation-name: floatDown;
-    animation-delay: 1s;
-}
-
-.testimonial-card:nth-child(3) {
-    animation-name: floatUp;
-    animation-delay: 2s;
-}
-
-.testimonial-card:hover {
-    transform: translateY(-4px); /* Reducido de -5px */
-    box-shadow: 0 8px 25px rgba(207, 126, 237, 0.2); /* Reducido de 0 10px 30px */
-    border-color: var(--color-accent);
-    animation-play-state: paused;
-}
-
-.testimonial-text {
-    margin-bottom: 15px; /* Reducido de 20px */
-    font-style: italic;
-    color: var(--color-text-secondary);
-    font-size: 14px; /* Añadido para reducir tamaño */
-}
-
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 12px; /* Reducido de 15px */
-}
-
-.testimonial-author img {
-    width: 40px; /* Reducido de 50px */
-    height: 40px; /* Reducido de 50px */
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.testimonial-author span {
-    font-weight: 600;
-    font-size: 14px; /* Añadido para reducir tamaño */
-}
-
-/* Pricing Section */
-.pricing {
-    padding: 80px 0; /* Reducido de 100px 0 */
-    position: relative;
-}
-
 .pricing-tabs {
     display: flex;
     justify-content: center;
@@ -1029,7 +948,7 @@ p {
         padding: 80px 0 50px; /* Reducido de 100px 0 60px */
     }
     
-    .features, .strategies, .testimonials, .pricing, .faq, .footer {
+    .features, .strategies, ..pricing, .faq, .footer {
         padding: 60px 0; /* Reducido de 80px 0 */
     }
 }
@@ -1047,11 +966,11 @@ p {
         padding: 60px 0 40px; /* Reducido de 80px 0 50px */
     }
     
-    .features, .strategies, .testimonials, .pricing, .faq, .footer {
+    .features, .strategies, ..pricing, .faq, .footer {
         padding: 50px 0; /* Reducido de 60px 0 */
     }
     
-    .features-grid, .strategies-grid, .testimonials-grid, .pricing-plans {
+    .features-grid, .strategies-grid, ..pricing-plans {
         grid-template-columns: 1fr;
     }
 }
@@ -1069,7 +988,7 @@ p {
         padding: 50px 0 30px; /* Reducido de 60px 0 40px */
     }
     
-    .features, .strategies, .testimonials, .pricing, .faq, .footer {
+    .features, .strategies, ..pricing, .faq, .footer {
         padding: 40px 0; /* Reducido de 50px 0 */
     }
     
