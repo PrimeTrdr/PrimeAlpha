@@ -53,7 +53,7 @@
     padding: 40px;
     text-align: center;
     transition: all 0.3s ease;
-    border: 1px solid #4169E1;
+    border: 1px solid #9c44ff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
@@ -68,8 +68,8 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #4169E1, transparent);
-    box-shadow: 0 0 15px 2px #4169E1;
+    background: linear-gradient(90deg, transparent, #9c44ff, transparent);
+    box-shadow: 0 0 15px 2px #9c44ff;
     opacity: 0.7;
 }
 
@@ -94,9 +94,9 @@
     justify-content: center;
     border-radius: 50%;
     background: linear-gradient(135deg, rgba(65, 105, 225, 0.1) 0%, rgba(79, 96, 250, 0.1) 100%);
-    border: 1px solid #4169E1;
+    border: 1px solid #9c44ff;
     position: relative;
-    box-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+    box-shadow: 0 0 15px rgba(156, 68, 255, 0.3);
 }
 
 .weekly-bonus-icon::before {
@@ -106,7 +106,7 @@
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(135deg, #4169E1 0%, var(--color-accent-secondary) 100%);
+    background: linear-gradient(135deg, #9c44ff 0%, var(--color-accent-secondary) 100%);
     border-radius: 50%;
     z-index: -1;
     opacity: 0.3;
@@ -134,11 +134,11 @@
 }
 
 .weekly-bonus-highlight {
-    background-color: rgba(65, 105, 225, 0.1);
+    background-color: rgba(156, 68, 255, 0.1);
     border-radius: var(--border-radius);
     padding: 20px;
     margin-bottom: 30px;
-    border: 1px solid rgba(65, 105, 225, 0.3);
+    border: 1px solid rgba(156, 68, 255, 0.3);
 }
 
 .weekly-bonus-highlight p {
@@ -149,7 +149,7 @@
 }
 
 .weekly-bonus-highlight strong {
-    color: #4169E1;
+    color: #9c44ff;
     font-weight: 700;
 }
 
@@ -168,7 +168,7 @@
 
 .weekly-bonus-feature::before {
     content: '✓';
-    color: #4169E1;
+    color: #9c44ff;
     position: absolute;
     left: 0;
     font-size: 18px;
