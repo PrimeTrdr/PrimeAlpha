@@ -1,220 +1,427 @@
+/* Telegram Bot Section Styles */
 .telegram-bot-section {
     padding: 80px 0;
-    background: linear-gradient(135deg, #1a0b2e 0%, #2a1a4a 100%);
-    color: white;
+    background-color: rgba(12, 5, 18, 0.7);
+    position: relative;
+    overflow: hidden;
+}
+
+.telegram-bot-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(65, 105, 225, 0.3) 0%, rgba(65, 105, 225, 0) 70%);
+    opacity: 0.2;
+    z-index: -1;
+    border-radius: 50%;
 }
 
 .telegram-bot-container {
-    max-width: 1200px;
+    max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 20px;
 }
 
 .telegram-bot-title {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .telegram-bot-title h2 {
-    font-size: 36px;
-    margin-bottom: 15px;
-    color: white;
+    font-size: 40px;
+    margin-bottom: 10px;
 }
 
 .telegram-bot-title p {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 700px;
+    color: var(--color-text-secondary);
+    max-width: 800px;
     margin: 0 auto;
+    font-size: 16px;
 }
 
 .telegram-features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-bottom: 50px;
 }
 
 .telegram-feature-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    background-color: rgba(19, 14, 28, 0.5);
+    border-radius: var(--border-radius);
     padding: 30px;
-    width: calc(33.333% - 30px);
-    min-width: 280px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-border);
 }
 
 .telegram-feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-accent);
 }
 
 .telegram-feature-icon {
     width: 60px;
     height: 60px;
-    margin: 0 auto 20px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
+    background: linear-gradient(135deg, rgba(207, 126, 237, 0.1) 0%, rgba(79, 96, 250, 0.1) 100%);
+    border: 1px solid rgba(207, 126, 237, 0.3);
 }
 
 .telegram-feature-icon img {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
 }
 
 .telegram-feature-title {
     font-size: 20px;
-    font-weight: 600;
     margin-bottom: 15px;
-    text-align: center;
-    color: white;
+    color: #fff;
 }
 
 .telegram-feature-description {
+    color: var(--color-text-secondary);
     font-size: 16px;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-    text-align: center;
 }
 
 .telegram-commands {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    background-color: rgba(19, 14, 28, 0.5);
+    border-radius: var(--border-radius);
     padding: 30px;
-    margin-top: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 50px;
+    border: 1px solid var(--color-border);
 }
 
 .telegram-commands-title {
     font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 25px;
-    color: white;
+    margin-bottom: 20px;
+    color: #fff;
     text-align: center;
 }
 
 .commands-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .command-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
     padding: 15px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
-    border-left: 3px solid #8a2be2;
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.command-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .command-name {
+    display: inline-block;
     font-family: monospace;
     font-size: 16px;
     font-weight: 600;
-    color: #8a2be2;
-    background: rgba(138, 43, 226, 0.1);
+    color: var(--color-accent);
+    margin-bottom: 10px;
     padding: 5px 10px;
+    background-color: rgba(207, 126, 237, 0.1);
     border-radius: 4px;
-    min-width: 120px;
 }
 
 .command-description {
-    font-size: 16px;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    margin-bottom: 0;
 }
 
 .telegram-demo {
-    margin-top: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 40px;
-}
-
-.telegram-demo-content {
-    flex: 1;
-    min-width: 280px;
+    background-color: rgba(19, 14, 28, 0.5);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    margin-bottom: 30px;
+    border: 1px solid var(--color-border);
+    text-align: center;
 }
 
 .telegram-demo-title {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 28px;
     margin-bottom: 20px;
-    color: white;
+    color: #fff;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .telegram-demo-description {
+    color: var(--color-text-secondary);
     font-size: 16px;
+    max-width: 800px;
+    margin: 0 auto 20px;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 25px;
-}
-
-.telegram-demo-image {
-    flex: 1;
-    min-width: 280px;
-    text-align: center;
-}
-
-.telegram-demo-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .telegram-cta {
-    margin-top: 50px;
     text-align: center;
+    margin-top: 40px;
 }
 
 .telegram-cta-button {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background: linear-gradient(135deg, #8a2be2 0%, #4a00e0 100%);
+    justify-content: center;
+    background-image: radial-gradient(67% 140% at 4.6% 40.8%, var(--button-gradient-start) 0%, var(--button-gradient-end) 100%);
     color: white;
-    font-size: 18px;
+    padding: 16px 32px;
+    border-radius: var(--button-border-radius);
     font-weight: 600;
-    padding: 15px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 8px 20px rgba(74, 0, 224, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: var(--button-shadow-color) 0px -3px 3px 0px inset;
 }
 
 .telegram-cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(74, 0, 224, 0.5);
+    box-shadow: var(--button-shadow-color) 0px -4px 6px 0px inset, 
+                rgba(250, 147, 250, 0.3) 0px 8px 15px;
 }
 
 .telegram-cta-button img {
     width: 24px;
     height: 24px;
+    margin-right: 10px;
+}
+
+/* New styles for added sections */
+.telegram-tech-strategy, 
+.telegram-fund-management, 
+.deposit-withdrawal-tutorial, 
+.risk-warning {
+    background-color: rgba(19, 14, 28, 0.5);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid var(--color-border);
+}
+
+.telegram-section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.telegram-tech-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.telegram-tech-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    color: var(--color-text-secondary);
+    font-size: 16px;
+}
+
+.telegram-tech-list li:before {
+    content: '•';
+    color: var(--color-accent);
+    font-size: 24px;
+    position: absolute;
+    left: 10px;
+    top: -2px;
+}
+
+.telegram-description {
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.telegram-management-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.management-feature {
+    background-color: rgba(207, 126, 237, 0.1);
+    border-radius: var(--border-radius);
+    padding: 12px 20px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.deposit-withdrawal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.deposit-withdrawal-card {
+    background: linear-gradient(145deg, rgba(19, 14, 28, 0.8), rgba(30, 20, 45, 0.8));
+    border-radius: var(--border-radius);
+    padding: 25px;
+    position: relative;
+    border: 1px solid rgba(156, 68, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.deposit-withdrawal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: rgba(156, 68, 255, 0.6);
+}
+
+.deposit-withdrawal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #4a00e0, #8a2be2);
+    opacity: 0.7;
+}
+
+.card-number {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #4a00e0, #8a2be2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.card-content {
+    padding-top: 10px;
+}
+
+.card-title {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.card-text {
+    color: var(--color-text-secondary);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.warning-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #ff6b6b;
+    text-align: center;
+}
+
+.warning-text {
+    color: #ff9999;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.6;
+    background-color: rgba(255, 107, 107, 0.1);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    border: 1px solid rgba(255, 107, 107, 0.3);
 }
 
 /* Responsive styles */
-@media (max-width: 992px) {
-    .telegram-feature-card {
-        width: calc(50% - 30px);
+@media (max-width: 768px) {
+    .telegram-bot-section {
+        padding: 60px 0;
+    }
+    
+    .telegram-bot-title h2 {
+        font-size: 32px;
+    }
+    
+    .telegram-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .telegram-demo, 
+    .telegram-tech-strategy, 
+    .telegram-fund-management, 
+    .deposit-withdrawal-tutorial, 
+    .risk-warning {
+        padding: 25px;
+    }
+    
+    .telegram-demo-title {
+        font-size: 24px;
+    }
+    
+    .telegram-section-title {
+        font-size: 22px;
+    }
+    
+    .telegram-cta-button {
+        padding: 14px 28px;
+        font-size: 16px;
     }
 }
 
-@media (max-width: 768px) {
-    .telegram-feature-card {
-        width: 100%;
+@media (max-width: 480px) {
+    .telegram-bot-section {
+        padding: 40px 0;
     }
     
-    .telegram-demo {
-        flex-direction: column;
+    .telegram-bot-title h2 {
+        font-size: 28px;
+    }
+    
+    .telegram-feature-card {
+        padding: 20px;
+    }
+    
+    .telegram-demo, 
+    .telegram-tech-strategy, 
+    .telegram-fund-management, 
+    .deposit-withdrawal-tutorial, 
+    .risk-warning {
+        padding: 20px;
+    }
+    
+    .telegram-demo-title {
+        font-size: 22px;
+    }
+    
+    .telegram-section-title {
+        font-size: 20px;
+    }
+    
+    .management-feature {
+        width: 100%;
+        text-align: center;
     }
 }
