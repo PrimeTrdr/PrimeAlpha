@@ -1,6 +1,6 @@
 .certificates-section {
     padding: 50px 0;
-    background: linear-gradient(135deg, #2a1a4a 0%, #1a0b2e 100%);
+    background-color: rgba(12, 5, 18, 0.7);
     position: relative;
     overflow: hidden;
 }
