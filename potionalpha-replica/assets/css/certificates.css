@@ -15,7 +15,7 @@
     background: linear-gradient(135deg, rgba(74, 0, 224, 0.3) 0%, rgba(138, 43, 226, 0.3) 100%);
     background-size: 200% 200%;
     animation: gradientAnimation 15s ease infinite;
-    z-index: 1;
+    z-index: -1;
 }
 
 @keyframes gradientAnimation {
