@@ -6,7 +6,6 @@
     <title>PrimeAlpha</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/certificates.css">
-    <link rel="stylesheet" href="assets/css/testimonials.css">
     <link rel="stylesheet" href="assets/css/weekly-bonus.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -28,7 +27,6 @@
     <!-- QR Code library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
     <script src="assets/js/certificates-loader.js"></script>
-    <script src="assets/js/testimonials-loader.js"></script>
 </head>
 <body>
     <!-- Navigation bar -->
@@ -252,7 +250,7 @@
                 
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <img src="assets/images/icons/trading-ai.svg" alt="Advanced Analysis">
+                        <img src="assets/images/icons/market-analysis-ai.png" alt="Advanced Analysis">
                     </div>
                     <h3 class="benefit-title">Market Analysis with AI</h3>
                     <p class="benefit-description">Our artificial intelligence algorithms continuously analyze the Solana market to identify the best opportunities before the rest of the market.</p>
@@ -260,7 +258,7 @@
                 
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <img src="assets/images/icons/trading-whale.svg" alt="Whale Tracking">
+                        <img src="assets/images/icons/whale-tracking.png" alt="Whale Tracking">
                     </div>
                     <h3 class="benefit-title">Whale Tracking</h3>
                     <p class="benefit-description">The bot monitors the wallets of the main whales in the Solana ecosystem, allowing you to follow smart money and anticipate major movements.</p>
@@ -390,6 +388,36 @@
                 </div>
             </div>
             
+            <div class="telegram-commands">
+                <h3 class="telegram-commands-title">Main Bot Commands</h3>
+                <div class="commands-list">
+                    <div class="command-item">
+                        <span class="command-name">/start</span>
+                        <p class="command-description">Start the bot and receive welcome instructions to begin using the system.</p>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/deposit</span>
+                        <p class="command-description">Generate a unique address to deposit SOL into your account (minimum 1 SOL).</p>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/withdraw</span>
+                        <p class="command-description">Withdraw your profits or capital to your Solana wallet at any time.</p>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/balance</span>
+                        <p class="command-description">Check your current balance, including invested capital and accumulated profits.</p>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/stats</span>
+                        <p class="command-description">View detailed performance statistics and historical operations.</p>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/help</span>
+                        <p class="command-description">Get help and immediate technical support for any query.</p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="telegram-demo">
                 <div class="telegram-demo-content">
                     <h3 class="telegram-demo-title">All the Magic in One Bot</h3>
@@ -409,20 +437,19 @@
 
     <!-- Trading Results Section -->
     <section id="trading-results" class="certificates-section">
-        <div class="container" style="position: relative; z-index: 1;">
+        <div class="animated-gradient-bg"></div>
+        <div class="container">
             <h2>Trading Results</h2>
             <p class="section-subtitle">See the incredible returns achieved by our AI-powered trading bot</p>
-        </div>
-        <div id="certificates-container" class="certificates-carousel" style="position: relative; z-index: 9999; margin-top: 20px;">
-            <!-- Certificate templates will be loaded here -->
-            <div class="certificate-placeholder">
-                <p>Esperando nuevos certificados...</p>
+            
+            <div id="certificates-container" class="certificates-carousel">
+                <!-- Certificate templates will be loaded here -->
+                <div class="certificate-placeholder">
+                    <p>Esperando nuevos certificados...</p>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Testimonials Section Placeholder -->
-    <div id="testimonials-placeholder"></div>
 
     <!-- Weekly Bonus Section -->
     <section id="weekly-bonus" class="weekly-bonus-section">

@@ -71,7 +71,6 @@
     border: none !important;
     width: 30% !important;
     max-width: 250px !important;
-    z-index: 10;
 }
 
 .certificate-item img {
@@ -82,7 +81,7 @@
     border-radius: 0 !important;
     display: inline-block !important;
     position: relative;
-    z-index: 10;
+    z-index: 2;
     box-shadow: none !important;
     filter: none !important;
     border: none !important;

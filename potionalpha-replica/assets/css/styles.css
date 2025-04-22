@@ -193,7 +193,7 @@ p {
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 9999;
     padding: 15px 0; /* Reducido de 20px 0 */
     background-color: rgba(12, 5, 18, 0.8);
     backdrop-filter: blur(10px);
