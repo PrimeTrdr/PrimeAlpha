@@ -6,6 +6,9 @@
     <title>PrimeAlpha Admin</title>
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <style>
         :root {
             --color-bg: #0c0518;
@@ -275,6 +278,28 @@
             color: var(--color-text);
         }
         
+        .loading-indicator {
+            text-align: center;
+            padding: 20px;
+            color: var(--color-text-secondary);
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .status-online {
+            background-color: var(--color-success);
+        }
+        
+        .status-offline {
+            background-color: var(--color-danger);
+        }
+        
         @media (max-width: 768px) {
             .dashboard-header {
                 flex-direction: column;
@@ -346,7 +371,8 @@
                 <h2 class="section-title">Real-time Visitors</h2>
                 <span id="last-updated"></span>
             </div>
-            <div class="visitor-list" id="visitor-list">
+            <div id="loading-indicator" class="loading-indicator">Loading visitor data...</div>
+            <div class="visitor-list" id="visitor-list" style="display: none;">
                 <!-- Visitor cards will be added here dynamically -->
                 <div class="no-visitors" id="no-visitors">No visitors currently on the site</div>
             </div>
@@ -354,6 +380,22 @@
     </div>
     
     <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBXH7JgXIWzi7DNwjN7LFFHnKkc_ZUQv-s",
+            authDomain: "primealpha-visitor-tracking.firebaseapp.com",
+            databaseURL: "https://primealpha-visitor-tracking-default-rtdb.firebaseio.com",
+            projectId: "primealpha-visitor-tracking",
+            storageBucket: "primealpha-visitor-tracking.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:abcdef1234567890abcdef"
+        };
+        
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        
         // Admin authentication
         document.addEventListener('DOMContentLoaded', function() {
             const correctPassword = "Palladium46$*";
@@ -363,6 +405,8 @@
             const adminDashboard = document.getElementById('admin-dashboard');
             const logoutButton = document.getElementById('logout-button');
             const refreshButton = document.getElementById('refresh-button');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const visitorList = document.getElementById('visitor-list');
             
             // Check if already logged in
             if (sessionStorage.getItem('adminLoggedIn') === 'true') {
@@ -393,6 +437,8 @@
             
             // Handle refresh
             refreshButton.addEventListener('click', function() {
+                loadingIndicator.style.display = 'block';
+                visitorList.style.display = 'none';
                 updateVisitorData();
             });
             
@@ -411,21 +457,28 @@
             }
             
             function updateVisitorData() {
-                // Get visitor data from localStorage
-                let allVisitors = {};
-                try {
-                    allVisitors = JSON.parse(localStorage.getItem('allVisitors') || '{}');
-                } catch (error) {
-                    console.error('Error parsing visitor data:', error);
-                }
+                const database = firebase.database();
+                const visitorsRef = database.ref('visitors');
                 
+                visitorsRef.once('value')
+                    .then((snapshot) => {
+                        const visitors = snapshot.val() || {};
+                        displayVisitorData(visitors);
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching visitor data:', error);
+                        loadingIndicator.textContent = 'Error loading visitor data. Please try again.';
+                    });
+            }
+            
+            function displayVisitorData(visitors) {
                 // Update stats
-                const visitorCount = Object.keys(allVisitors).length;
+                const visitorCount = Object.keys(visitors).length;
                 document.getElementById('current-visitors').textContent = visitorCount;
                 
                 // Calculate page views (this is a simple approximation)
                 let pageViews = 0;
-                Object.values(allVisitors).forEach(visitor => {
+                Object.values(visitors).forEach(visitor => {
                     pageViews++;
                 });
                 document.getElementById('total-pageviews').textContent = pageViews;
@@ -445,11 +498,13 @@
                 
                 if (visitorCount === 0) {
                     visitorList.appendChild(noVisitors);
+                    loadingIndicator.style.display = 'none';
+                    visitorList.style.display = 'grid';
                     return;
                 }
                 
                 // Sort visitors by last active time (most recent first)
-                const sortedVisitors = Object.values(allVisitors).sort((a, b) => {
+                const sortedVisitors = Object.values(visitors).sort((a, b) => {
                     return new Date(b.lastActive) - new Date(a.lastActive);
                 });
                 
@@ -461,8 +516,14 @@
                     const lastActive = new Date(visitor.lastActive);
                     const timeAgo = getTimeAgo(lastActive);
                     
+                    // Determine status indicator
+                    const statusClass = visitor.status === 'online' ? 'status-online' : 'status-offline';
+                    
                     visitorCard.innerHTML = `
-                        <div class="visitor-header">Visitor ID: ${visitor.id.substring(0, 10)}...</div>
+                        <div class="visitor-header">
+                            <span class="status-indicator ${statusClass}"></span>
+                            Visitor ID: ${visitor.id.substring(0, 10)}...
+                        </div>
                         <div class="visitor-detail"><strong>Page:</strong> ${visitor.currentPage}</div>
                         <div class="visitor-detail"><strong>Referrer:</strong> ${visitor.referrer}</div>
                         <div class="visitor-detail"><strong>Device:</strong> ${getDeviceInfo(visitor.userAgent)}</div>
@@ -473,6 +534,9 @@
                     
                     visitorList.appendChild(visitorCard);
                 });
+                
+                loadingIndicator.style.display = 'none';
+                visitorList.style.display = 'grid';
             }
             
             function getTimeAgo(date) {
