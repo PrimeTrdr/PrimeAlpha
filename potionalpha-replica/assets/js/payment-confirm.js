@@ -477,6 +477,9 @@ class PaymentConfirmation {
         this.confirmations.push(data);
         this.saveConfirmations();
         
+        // Send email notification
+        this.sendEmailNotification(data);
+        
         // Show success message
         resultDiv.innerHTML = `
             <div class="success-message">
@@ -497,6 +500,50 @@ class PaymentConfirmation {
                 modal.style.display = 'none';
             }
         }, 5000);
+    }
+
+    /**
+     * Send email notification with payment details
+     */
+    sendEmailNotification(data) {
+        // Initialize EmailJS if not already initialized
+        if (typeof emailjs !== 'undefined' && !window.emailjsInitialized) {
+            emailjs.init("user_your_emailjs_user_id"); // Replace with your actual EmailJS User ID
+            window.emailjsInitialized = true;
+        }
+
+        if (typeof emailjs !== 'undefined') {
+            // Prepare template parameters
+            const templateParams = {
+                to_email: 'admin@primealpha.com', // Replace with your actual email
+                from_name: data.name,
+                from_email: data.email,
+                subject: `New Payment Confirmation: ${data.plan} Plan`,
+                message: `
+                    New payment confirmation submitted:
+                    
+                    Name: ${data.name}
+                    Email: ${data.email}
+                    Plan: ${data.plan}
+                    Transaction ID: ${data.transactionId}
+                    Date: ${new Date(data.date).toLocaleString()}
+                    
+                    Additional Notes:
+                    ${data.notes || 'None'}
+                `,
+                confirmation_id: data.id
+            };
+
+            // Send the email
+            emailjs.send('default_service', 'template_payment_confirmation', templateParams)
+                .then(function(response) {
+                    console.log('Email sent successfully:', response);
+                }, function(error) {
+                    console.error('Failed to send email:', error);
+                });
+        } else {
+            console.error('EmailJS not loaded');
+        }
     }
 
     /**

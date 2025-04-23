@@ -1,0 +1,65 @@
+/* Base64 encoded favicon data */
+const faviconData = `
+iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAF
+HGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0w
+TXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRh
+LyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEz
+LTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3Jn
+LzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0i
+IiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRw
+Oi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMu
+YWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNv
+bS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9z
+VHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0Mg
+MjAxOSAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjUtMDQtMjJUMTE6NDc6MzArMDA6
+MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDI1LTA0LTIyVDExOjQ3OjMwKzAwOjAwIiB4bXA6TWV0YWRh
+dGFEYXRlPSIyMDI1LTA0LTIyVDExOjQ3OjMwKzAwOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIg
+cGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5
+NjYtMi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjJlYzI3ZjQzLTJlZDctNGU5Ny1hMzA2
+LTAyMDEzNzZkZGI5YSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyZWMyN2Y0My0yZWQ3LTRl
+OTctYTMwNi0wMjAxMzc2ZGRiOWEiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoy
+ZWMyN2Y0My0yZWQ3LTRlOTctYTMwNi0wMjAxMzc2ZGRiOWEiPiA8eG1wTU06SGlzdG9yeT4gPHJk
+ZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4
+bXAuaWlkOjJlYzI3ZjQzLTJlZDctNGU5Ny1hMzA2LTAyMDEzNzZkZGI5YSIgc3RFdnQ6d2hlbj0i
+MjAyNS0wNC0yMlQxMTo0NzozMCswMDowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhv
+dG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+
+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5k
+PSJyIj8+HyW/eAAAA2JJREFUWIXFl01oXFUUx3/nvvdmJpNJk9ikST/UJqGp1TZqLRQXbqwfFAQX
+LsSFuhF3bnThRty5cCEIulNciLhQF4IbQVBbP2qrVVOTSJukSZrJZDLz3j3HxUxmkkySmQRa/8vL
+fe/c87/n/M//3vsEYwxXMuwVZb9SoJTiwsWLnBkdJQgCrLUAGGOQUjI0NMToyAhKqStK4LKlUEpJ
+GIb0ej2UUhhjSJKEJElIkoQwDOn1ekgpryiBSxIQQiCEQGtNHMdorYnjmDiO6Xa7dLtdgiBAa40Q
+4soRMMZgrSWKIqIoIo5jgiCg0+nQ6XTodDr4vk8URRhjHj4BY8yCnHEco7XG932CIKDVatFqtWi3
+2/i+TxzHC+QfCgFrLUmSEMcxWmviOCYIAjzPw/M8PM+j2WzSbDYJw5AkSRZIfigEjDFYa0mSZEHO
+IAhotVo0Gg0ajQb1ep1Go0EYhiRJsqj8QyGQTsI0b6fTwfd9PM+jXq9Tq9Wo1WrUajU8zyOKokXl
+HwoBYwxJkpAkCWEY0ul0aLfbtFotqtUq1WqVarVKpVLB9/0F5R8KgXQSWmvp9XoEQUC73abZbFKr
+1ahUKpTLZcrlMqVSiSAIFpV/KATSSZhOQt/3abfb1Ot1KpUKpVKJYrFIoVCgUCjgeR5RFD10AkII
+pJRIKdFa0+v1CIKAZrNJtVqlXC5TKBTIZrNks1lyuRyZTIYoih46gXQSCiHQWhPHMWEY0mq1qNVq
+lMtlCoUCuVyObDZLJpMhk8mQyWQWJfBQCKSTMI5jgiCg0WhQrVYplUrkcrn+yGQyZDIZMpkMUkq0
+1g+fgLWWOI6J45gwDPF9n3q9TqVSoVgsks/nyefz5HI5crnc/0/AWkuSJCRJQq/XI4oifN+nVqtR
+LpcpFovk83my2SzZbJZsNks+n0dK+fAJGGMwxmCtJUkStNZEUUQQBNTrdSqVCsVikXw+Ty6XI5fL
+kcvlyOfzZDKZRQk8cBWkk9AYQ5IkaK2JogjP86hWq5RKJQqFAvl8fmDk83my2SxKqUUJPDABIQRC
+CKSUKKVQSqG1ptfr0el0qNfrVCoVSqUShUKBfD5PPp8nm82Sy+XIZrMDBC5rL7icSCkHiCilkFKi
+lEIpRbfbxfM8arUa5XKZYrFIoVCgUCiQz+fJ5/P9EUXRkgQeyX9DpZTMzMxw/PhxpqamBrbn8/n+
+9nw+z+joKFu2bFnWXvBvgCMxJoAWB0wAAAAASUVORK5CYII=
+`;
+
+// Create a favicon from base64 data
+function createFavicon() {
+    // Create a link element for the favicon
+    const link = document.createElement('link');
+    link.rel = 'icon';
+    link.type = 'image/png';
+    link.href = 'data:image/png;base64,' + faviconData.trim();
+    
+    // Remove any existing favicon links
+    const existingLinks = document.querySelectorAll('link[rel*="icon"]');
+    existingLinks.forEach(el => el.parentNode.removeChild(el));
+    
+    // Add the new favicon link to the head
+    document.head.appendChild(link);
+    
+    console.log('Dynamic favicon created and applied');
+}
+
+// Initialize when the DOM is loaded
+document.addEventListener('DOMContentLoaded', createFavicon);
